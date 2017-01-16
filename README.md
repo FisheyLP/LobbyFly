@@ -6,3 +6,8 @@
 
 This plugin is tested on 1.8.X. It will enable fly for a player as long as he holds 
 an specific item which is set in the config (Default: Netherstar)
+
+If the Item ID is invalid the plugin uses 399 (NetherStar) instead without changing the config.
+Also users with permission `lobbyfly.admin` and OPs get a notification that the ID is invalid
+
+-> SpigotMC Link here <- 
