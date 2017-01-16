@@ -10,4 +10,19 @@ an specific item which is set in the config (Default: Netherstar)
 If the Item ID is invalid the plugin uses 399 (NetherStar) instead without changing the config.
 Also users with permission `lobbyfly.admin` and OPs get a notification that the ID is invalid
 
+---
+###Features:
+- Specify item in config
+- prevent errors on invalid items
+- command support for `/lfly` and `/lobbyfly`
+- help menu on `/lfly` and `/lfly help`
+- option to change the prefix of the plugin (with color support)
+- command to deny users (`/lfly deny (username)`)
+- command to undeny users (`/lfly undeny (username)`)
+- command to list denied users (`/lfly denylist`)
+- command to see if a user is denied (`/lfly status (username)`)
+
 -> SpigotMC Link here <- 
+
+---
+Note: this plugin was developed for the EpticMC.com server but I choosed to publish it 
