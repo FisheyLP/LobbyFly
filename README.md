@@ -1,6 +1,6 @@
 # LobbyFly
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/NLDev/LobbyFly/master/LICENSE) [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://github.com/NLDev/LobbyFly) [![Release](https://img.shields.io/github/release/NLDev/Fail2Ban-Log-Viewer.svg)](https://github.com/NLDev/Fail2Ban-Log-Viewer/releases)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/NLDev/LobbyFly/master/LICENSE) [![Travis](https://img.shields.io/travis/rust-lang/rust.svg)](https://github.com/NLDev/LobbyFly) [![Release](https://img.shields.io/github/release/NLDev/LobbyFly.svg)](https://github.com/NLDev/LobbyFly/releases)
 
 ###A Spigot Plugin which enables fly for a player as long as he holds an item 
 
