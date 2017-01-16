@@ -1,0 +1,5 @@
+name: LobbyFly
+main: org.nulldev.LobbyFly.Main
+author: NullDev / Shadow
+version: 1.0
+description: Allows normal players to Fly when they hold an item

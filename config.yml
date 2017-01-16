@@ -1,0 +1,10 @@
+###################
+# LobbyFly Config #
+#-----------------#
+# ~ By  NullDev ~ #
+###################
+
+# Specify the Item which triggers the Fly event here (Default is 399 which is NetherStar):
+fly-item: 399
+
+# More comming soon!
