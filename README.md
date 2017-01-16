@@ -25,4 +25,4 @@ Also users with permission `lobbyfly.admin` and OPs get a notification that the 
 -> SpigotMC Link here <- 
 
 ---
-Note: this plugin was developed for the EpticMC.com server but I choosed to publish it 
+Note: this plugin was developed for the <a href="https://epticmc.com" target="_blank">EpticMC.com</a> server but I choosed to publish it 
