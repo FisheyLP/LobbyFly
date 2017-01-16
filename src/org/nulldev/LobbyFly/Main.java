@@ -69,53 +69,53 @@ public class Main extends JavaPlugin implements Listener {
         }
     }
     
-    @EventHandler
-    //getTypeId() is deprecated but still works fine. New method would be getType() which returns a Material
-    @SuppressWarnings("deprecation")
+	@EventHandler
+	//getTypeId() is deprecated but still works fine. New method would be getType() which returns a Material
+	@SuppressWarnings("deprecation")
     public void onItem(PlayerMoveEvent e){
-        prefix = Main.getInstance().getConfig().getString("prefix");
+		prefix = Main.getInstance().getConfig().getString("prefix");
     	Player p = e.getPlayer();
     	GameMode gm = p.getGameMode();
-        //We don't want to disable fly for OP's or people in GM1
+		//We don't want to disable fly for OP's or people in GM1
     	if(!p.isOp() && !gm.toString().toLowerCase().equals("creative") && !p.hasPermission("lobyfly.bypass")){
-            item = Main.getInstance().getConfig().getInt("fly-item-id");
-    	    //Check if it's a valid item
-    	    if (Material.getMaterial(item) != null && item != null){
-    	        if(p.getItemInHand().getTypeId() == item){
-    		    if(p.getAllowFlight() == false){
-    	                p.setAllowFlight(true);
-    			p.setFlying(true);
-    		    }
+    		item = Main.getInstance().getConfig().getInt("fly-item-id");
+    		//Check if it's a valid item
+    		if (Material.getMaterial(item) != null && item != null){
+    			if(p.getItemInHand().getTypeId() == item){
+    				if(p.getAllowFlight() == false){
+    					p.setAllowFlight(true);
+    					p.setFlying(true);
+    				}
+    			}
+    			else{
+    				if(p.getAllowFlight() == true){
+    					p.setAllowFlight(false);
+    					p.setFlying(false);
+    				}
+    			}
     		}
+    		//Use fallback item 399 (NetherStar)
     		else{
-    		    if(p.getAllowFlight() == true){
-    		        p.setAllowFlight(false);
-    			p.setFlying(false);
-    		    }
-    		}
-            }
-    	    //Use fallback item 399 (NetherStar)
-    	    else{
-    	        if(p.getItemInHand().getTypeId() == 399){
-    		    if(p.getAllowFlight() == false){
-    		        p.setAllowFlight(true);
-    			p.setFlying(true);
-    		    }
-    		}
-    		else{
-    		    if(p.getAllowFlight() == true){
-    	                p.setAllowFlight(false);
-    			p.setFlying(false);
-    		    }
-    		}
-    		//Telling all OP's (and players with permission lobbyfly.admin that the ID is invalid
-    		for(Player op : Bukkit.getOnlinePlayers()){
+    			if(p.getItemInHand().getTypeId() == 399){
+    				if(p.getAllowFlight() == false){
+    					p.setAllowFlight(true);
+    					p.setFlying(true);
+    				}
+    			}
+    			else{
+    				if(p.getAllowFlight() == true){
+    					p.setAllowFlight(false);
+    					p.setFlying(false);
+    				}
+    			}
+    			//Telling all OP's (and players with permission lobbyfly.admin that the ID is invalid
+    			for(Player op : Bukkit.getOnlinePlayers()){
     	            if(op.hasPermission("lobbyfly.admin") || op.isOp()){
     	                op.sendMessage(colWrap(prefix + " &c&lWARNING&r&f: "+
-    	                "Item ID in config is invalid! Using 399 (NetherStar) instead!"));
+    	            "Item ID in config is invalid! Using 399 (NetherStar) instead!"));
     	            }
     	        }
-    	    }
+    		}
     	}
     }
     
