@@ -1,0 +1,10 @@
+
+<settings>
+  <servers>
+    <server>
+      <id>NLDev</id>
+      <username>${env.CI_USER}</username>
+      <password>${env.CI_PASSWORD}</password>
+    </server>
+  </servers>
+</settings>
