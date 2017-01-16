@@ -9,15 +9,15 @@ import org.nulldev.LobbyFly.Main;
 
 public class CmdHandle extends Main{
 
-	public Array denylist;
-	public String prefix;
+    public Array denylist;
+    public String prefix;
 	
     public CmdHandle(Main main){ /*Null*/ }
     
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] a) {
     	prefix = Main.getInstance().getConfig().getString("prefix");
     	@SuppressWarnings("unused")
-		Player p; //p = (Player)sender;
+        Player p; //p = (Player)sender;
         if (!sender.hasPermission("lobbyfly.admin") || !sender.isOp()) {
             sender.sendMessage(colWrap(prefix + " &cNo permission!"));
             return false;
