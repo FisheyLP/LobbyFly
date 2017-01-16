@@ -17,7 +17,7 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public class Main extends JavaPlugin implements Listener {
-	
+//Travis CI test
     public Main plugin;
     public List<String> viewers = new ArrayList<String>();
     public Logger logger = Logger.getLogger("Minecraft");
