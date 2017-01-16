@@ -31,19 +31,20 @@ public class Main extends JavaPlugin implements Listener {
     public static Main getInstance() {
         return instance;
     }
-    
+	
+    @Override
     public void onEnable() {
     	this.checkConfig();
         instance = this;
     	Bukkit.getServer().getPluginManager().registerEvents(this, this);
-        PluginDescriptionFile pdfFile = this.getDescription();
-        this.logger.info("[" + String.valueOf(String.valueOf(pdfFile.getName())) + "] Version: " + 
-        pdfFile.getVersion() + " by NullDev for EpticMC has been enabled!");
-        this.getCommand("lfly").setExecutor((CommandExecutor)new CmdHandle(this));
+        // enable log interessiert keine sau und bukkit/spigot machts eh automatisch :$
+        this.getCommand("lfly").setExecutor(new CmdHandle());
     }
     
-    //This works for 1.8.X
+	
+    //This works for 1.8.X noone cares ._.
     public String colWrap(String txt){
+	    //weg damit, benutz ChatColor.translateAlternateColorCodes('&', text)
         String txtDone = null;
         for(int i = 0; i < txt.length(); i++)
         {
@@ -64,7 +65,7 @@ public class Main extends JavaPlugin implements Listener {
         }
         File denylist = new File(this.getDataFolder(), "denylist.json");
         if (!denylist.exists()) {
-            this.saveDefaultConfig();
+          //  this.saveDefaultConfig(); config ≠ irgendeine json datei
             this.getLogger().info("denylist.json created.");
         }
     }
@@ -118,10 +119,8 @@ public class Main extends JavaPlugin implements Listener {
     		}
     	}
     }
-    
+    @Override
     public void onDisable() {
-        PluginDescriptionFile pdfFile = this.getDescription();
-        this.logger.info(String.valueOf("[" + String.valueOf(pdfFile.getName())) + "] Version: " + 
-        pdfFile.getVersion() + " by NullDev for EpticMC has been disabled!");
+        instance = null;
     }
 }
