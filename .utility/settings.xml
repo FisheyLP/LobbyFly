@@ -1,9 +1,0 @@
-<settings>
-	<servers>
-		<server>
-			<id>pub-repo</id>
-			<username>${env.DEPLOY_USER}</username>
-			<password>${env.DEPLOY_PASS}</password>
-		</server>
-	</servers>
-</settings>
