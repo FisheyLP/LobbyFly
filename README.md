@@ -7,8 +7,10 @@
 This plugin is tested on 1.8.X. It will enable fly for a player as long as he holds 
 an specific item which is set in the config (Default: Netherstar)
 
-If the Item ID is invalid the plugin uses 399 (NetherStar) instead without changing the config.
+If the Item ID is invalid the plugin uses 399 (NetherStar) instead without changing the config. 
 Also users with permission `lobbyfly.admin` and OPs get a notification that the ID is invalid
+
+If a user is OP, in Gamemode 1, or has the permission `lobbyfly.bypass` his fly won't be affected by the plugin! 
 
 ---
 ###Features:
@@ -21,6 +23,8 @@ Also users with permission `lobbyfly.admin` and OPs get a notification that the 
 - command to undeny users (`/lfly undeny (username)`)
 - command to list denied users (`/lfly denylist`)
 - command to see if a user is denied (`/lfly status (username)`)
+- permission node `lobbyfly.bypass` for deactivating the plugin
+- permission node `lobbyfly.admin` for getting notifications on errors and using the plugin
 
 -> SpigotMC Link here <- 
 
