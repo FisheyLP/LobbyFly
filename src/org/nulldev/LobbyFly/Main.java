@@ -47,6 +47,7 @@ public class Main extends JavaPlugin implements Listener {
     }
     
     @EventHandler
+    //getTypeId() is depricated but still works fine. New method would be getType() which returns a Material
     @SuppressWarnings("deprecation")
     public void onItem(PlayerMoveEvent e){
         Player p = e.getPlayer();
@@ -86,6 +87,7 @@ public class Main extends JavaPlugin implements Listener {
     		//Telling all OP's (and players with permission lobbyfly.admin that the ID is invalid
     		for(Player op : Bukkit.getOnlinePlayers()){
     	            if(op.hasPermission("lobbyfly.admin") || op.isOp()){
+			//This is just one message. No need for a color wrapper (at the moment)
     	                op.sendMessage(ChatColor.GRAY + "[" + ChatColor.AQUA + "Lobby" + ChatColor.DARK_AQUA + "Fly" +
     	                	ChatColor.GRAY + "] " + ChatColor.RED + ChatColor.BOLD + "WARNING" + ChatColor.RESET + 
     	                	": Item ID in config is invalid! Using 399 (NetherStar) instead!");
