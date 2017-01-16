@@ -1,6 +1,6 @@
 # LobbyFly
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/NLDev/AdvancedPlusOne/master/LICENSE)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/NLDev/LobbyFly/master/LICENSE)
 
 ###A Spigot Plugin which enables fly for a player as long as he holds an item 
 
