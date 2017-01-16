@@ -1,30 +1,48 @@
 package org.nulldev.LobbyFly;
 
-import java.lang.reflect.Array;
-
+import java.io.File;
+import java.io.FileReader;
+import java.util.ArrayList;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.nulldev.LobbyFly.Main;
 
 public class CmdHandle extends Main{
 
-    public Array denylist;
-    public String prefix;
-	
+	public ArrayList<String> denylist = new ArrayList<String>();
+	public String prefix;
     public CmdHandle(Main main){ /*Null*/ }
     
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] a) {
     	prefix = Main.getInstance().getConfig().getString("prefix");
-    	@SuppressWarnings("unused")
-        Player p; //p = (Player)sender;
+		Player p; //p = (Player)sender;
+		JSONParser jsonParse = new JSONParser();
+        try
+        {
+        	File jsonData = new File(this.getDataFolder(), "denylist.json");
+            Object obj = jsonParse.parse(new FileReader(jsonData));
+            JSONObject jsonObj = (JSONObject)obj;
+            JSONArray denied = (JSONArray)jsonObj.get("denied"); //No need for ToLowerCase here 
+            for(Object deny : denied)
+            {
+                denylist.add(deny.toString());
+            }
+        }
+        catch(Exception e)
+        {
+            e.printStackTrace();
+        }
         if (!sender.hasPermission("lobbyfly.admin") || !sender.isOp()) {
             sender.sendMessage(colWrap(prefix + " &cNo permission!"));
-            return false;
+            return true;
         }
         if (!(sender instanceof Player)) {
             sender.sendMessage(colWrap(prefix + " &cThis can only be executed ingame!"));
-            return false;
+            return true;
         }
         if (a.length < 1 || !a[0].equals("deny") && a[0].equals("denylist") && !a[0].equals("undeny") || a[0].equalsIgnoreCase("help")) {
             sender.sendMessage(colWrap(prefix + " &fHelp Menu:"));
@@ -44,10 +62,14 @@ public class CmdHandle extends Main{
             p = (Player)sender;
 
         }
+        if (a[0].equalsIgnoreCase("denylist")) {
+            p = (Player)sender;
+
+        }
         if (a[0].equalsIgnoreCase("undeny")) {
             p = (Player)sender;
 
         }
-        return false;
+        return true;
     }
 }
