@@ -11,12 +11,12 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.nulldev.LobbyFly.Main;
 
-public class CmdHandle extends Main{
+public class CmdHandle implements CommandExecutor {
 
 	public ArrayList<String> denylist = new ArrayList<String>();
 	public String prefix;
-    public CmdHandle(Main main){ /*Null*/ }
-    
+   
+    @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] a) {
     	prefix = Main.getInstance().getConfig().getString("prefix");
 		Player p; //p = (Player)sender;
@@ -56,7 +56,7 @@ public class CmdHandle extends Main{
             sender.sendMessage(colWrap("&6       &l~ &b&lNOTE: &bYou can use &9/lobbyfly &bor &9/lfly ~"));
             sender.sendMessage(colWrap("This plugin was coded by &a&lNullDev &ffor &c&lEptic&4&lMC&f.com"));
             sender.sendMessage(colWrap("&b======================================================"));
-            return false;
+            return true;
         }
         if (a[0].equalsIgnoreCase("deny")) {
             p = (Player)sender;
