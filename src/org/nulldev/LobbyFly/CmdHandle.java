@@ -13,8 +13,8 @@ import org.nulldev.LobbyFly.Main;
 
 public class CmdHandle extends Main{
 
-	public ArrayList<String> denylist = new ArrayList<String>();
-	public String prefix;
+    public ArrayList<String> denylist = new ArrayList<String>();
+    public String prefix;
     public CmdHandle(Main main){ /*Null*/ }
     
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] a) {
