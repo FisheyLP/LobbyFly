@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
 import org.bukkit.command.Command;
+import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.json.simple.JSONArray;
@@ -11,19 +12,19 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.nulldev.LobbyFly.Main;
 
-public class CmdHandle extends Main{
+public class CmdHandle implements CommandExecutor {
 
-    public ArrayList<String> denylist = new ArrayList<String>();
-    public String prefix;
-    public CmdHandle(Main main){ /*Null*/ }
+	public ArrayList<String> denylist = new ArrayList<String>();
+	public String prefix;
     
+	@Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] a) {
     	prefix = Main.getInstance().getConfig().getString("prefix");
 		Player p; //p = (Player)sender;
 		JSONParser jsonParse = new JSONParser();
         try
         {
-        	File jsonData = new File(this.getDataFolder(), "denylist.json");
+        	File jsonData = new File(Main.getDataFolder(), "denylist.json");
             Object obj = jsonParse.parse(new FileReader(jsonData));
             JSONObject jsonObj = (JSONObject)obj;
             JSONArray denied = (JSONArray)jsonObj.get("denied"); //No need for ToLowerCase here 
@@ -56,7 +57,7 @@ public class CmdHandle extends Main{
             sender.sendMessage(colWrap("&6       &l~ &b&lNOTE: &bYou can use &9/lobbyfly &bor &9/lfly ~"));
             sender.sendMessage(colWrap("This plugin was coded by &a&lNullDev &ffor &c&lEptic&4&lMC&f.com"));
             sender.sendMessage(colWrap("&b======================================================"));
-            return false;
+            return true;
         }
         if (a[0].equalsIgnoreCase("deny")) {
             p = (Player)sender;
