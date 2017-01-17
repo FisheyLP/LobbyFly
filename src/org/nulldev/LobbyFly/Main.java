@@ -32,30 +32,14 @@ public class Main extends JavaPlugin implements Listener {
         return instance;
     }
     
+	@Override
     public void onEnable() {
     	this.checkConfig();
         instance = this;
     	Bukkit.getServer().getPluginManager().registerEvents(this, this);
-        PluginDescriptionFile pdfFile = this.getDescription();
-        this.logger.info("[" + String.valueOf(String.valueOf(pdfFile.getName())) + "] Version: " + 
-        pdfFile.getVersion() + " by NullDev for EpticMC has been enabled!");
-        this.getCommand("lfly").setExecutor((CommandExecutor)new CmdHandle(this));
+        this.getCommand("lfly").setExecutor(new CmdHandle());
     }
-    
-    //This works for 1.8.X
-    public String colWrap(String txt){
-        String txtDone = null;
-        for(int i = 0; i < txt.length(); i++)
-        {
-            if(txt.charAt(i) == '&'){
-            	//This might need an escape
-                txtDone += '§';
-            }
-            else txtDone += txt.charAt(i);
-        }
-        return txtDone;
-    }
-    
+	
     private void checkConfig() {
         File config = new File(this.getDataFolder(), "config.yml");
         if (!config.exists()) {
@@ -70,9 +54,7 @@ public class Main extends JavaPlugin implements Listener {
     }
     
 	@EventHandler
-	//getTypeId() is deprecated but still works fine. New method would be getType() which returns a Material
-	@SuppressWarnings("deprecation")
-    public void onItem(PlayerMoveEvent e){
+	public void onItem(PlayerMoveEvent e){
 		prefix = Main.getInstance().getConfig().getString("prefix");
     	Player p = e.getPlayer();
     	GameMode gm = p.getGameMode();
@@ -96,7 +78,7 @@ public class Main extends JavaPlugin implements Listener {
     		}
     		//Use fallback item 399 (NetherStar)
     		else{
-    			if(p.getItemInHand().getTypeId() == 399){
+    			if(p.getItemInHand().getType() == Material.NETHER_STAR){
     				if(p.getAllowFlight() == false){
     					p.setAllowFlight(true);
     					p.setFlying(true);
